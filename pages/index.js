@@ -1,10 +1,12 @@
 import AntLayout from '../components/AntLayout';
 
-export default function Home() {
+export default function Login() {
+  const hasProfile = false;
+  const hasSideBar = false;
   return (
-    <AntLayout>
+    <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
       <h1>
-      index.js
+      login
     </h1>
     </AntLayout>
   );

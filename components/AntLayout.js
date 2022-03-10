@@ -1,13 +1,11 @@
 import Head from "next/head";
 import React from "react";
-import Copyright from "./Copyright";
 
-import SideBar from "./SideBar";
-import { Layout, Menu } from "antd";
+import { Layout} from "antd";
 import { AntHeader } from "./AntHeader";
-
+import SideBar from "./SideBar";
+import Copyright from "./Copyright";
 const { Content } = Layout;
-
 export default function AntLayout(props) {
   return (
     <div>
@@ -15,9 +13,10 @@ export default function AntLayout(props) {
       <Head>
         <title>CooPlan</title>
       </Head>
-      <AntHeader />
+      <AntHeader hasProfile={props.hasProfile}/>
+      
       <Layout style={{ minHeight: "100vh" }}>
-        <SideBar />
+        {props.hasSideBar ? <SideBar /> : ''}
         <Layout className="site-layout">
           {/* contents */}
           <Content
@@ -26,7 +25,6 @@ export default function AntLayout(props) {
           >
             {props.children}
           </Content>
-
           {/* footer */}
           <Copyright />
         </Layout>
