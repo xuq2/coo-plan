@@ -8,6 +8,7 @@
   .logo {
     font-size: 36px;
     color: #fff;
+    
   }
   .ant-row-rtl #components-layout-demo-top-side-2 .logo {
     float: right;
@@ -16,4 +17,14 @@
   
   .site-layout-background {
     background: #fff;
+  }
+
+  .site-layout {
+    background-color: #D6E6FF;
+  }
+  .ant-layout-footer {
+    background-color: #D6E6FF;
+  }
+  .ant-layout-sider-trigger {
+    background-color: #5F9FFF;
   }
