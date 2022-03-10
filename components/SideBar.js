@@ -16,15 +16,17 @@ function SideBar() {
     <>
       {/* TODO: background颜色要改, 选择颜色改变加重 */}
       <Sider
-        style={{ backgroundColor: "#F0F4F9" }}
+        style={{ backgroundColor: "#F0F4F9"}}
         collapsible
         collapsed={collapsed}
         onCollapse={() => setCollapsed(!collapsed)}
+        width="210px"
       >
         <Menu
           style={{ backgroundColor: "#F0F4F9" }}
           defaultSelectedKeys={["1"]}
           mode="inline"
+          
         >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Home
@@ -38,7 +40,10 @@ function SideBar() {
           </Menu.Item>
           <Divider/>
           {/* TODO： 回收时不会隐藏 */}
+          <Menu.Item key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+            
           <Button>Make new plan</Button>
+          </Menu.Item>
         </Menu>
       </Sider>
     </>
