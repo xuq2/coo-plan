@@ -26,7 +26,7 @@
     background-color: #D6E6FF;
   }
   .ant-layout-sider-trigger {
-    background-color: #5F9FFF;
+    background-color: #5F9FFF !important;
   }
 
   .center-container {
