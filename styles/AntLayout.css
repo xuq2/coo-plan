@@ -20,7 +20,7 @@
   }
 
   .site-layout {
-    background-color: #D6E6FF;
+    background-color: #D6E6FF !important;
   }
   .ant-layout-footer {
     background-color: #D6E6FF;
