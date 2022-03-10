@@ -1,7 +1,5 @@
-import { Avatar, Button, Dropdown, Menu } from "antd";
+import { Avatar,Dropdown, Menu } from "antd";
 import React, { useState } from "react";
-import { AntHeader } from "./AntHeader";
-import { UserOutlined } from "@ant-design/icons";
 
 //TODO: to be applied in pages
 function ProfileIcon() {
