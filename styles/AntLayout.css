@@ -42,7 +42,6 @@
     transform: translate(-50%, -50%);
     background-color: #5F9FFF;
     color: black;
-    text-align: center;
     border-radius: 10px;
   }
 
@@ -102,10 +101,6 @@
     border: none;
     outline: none;
   }
-
-  /* input[type=password] {
-    font-size: 20px;
-  } */
 
   input[type=text]:focus {
     border: none;
