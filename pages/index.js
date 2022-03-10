@@ -1,11 +1,11 @@
-import Layout from '../components/Layout';
+import AntLayout from '../components/AntLayout';
 
 export default function Home() {
   return (
-    <Layout>
+    <AntLayout>
       <h1>
-      Hello world!
+      index.js
     </h1>
-    </Layout>
+    </AntLayout>
   );
 }

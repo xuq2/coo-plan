@@ -1,9 +1,12 @@
-import react from "react";
+import React from "react";
+import { Layout} from 'antd';
+
+
+const {Footer} = Layout;
+
 function Copyright() {
     return (
-        <div>
-            Copyright © <a href=''>COOPLAN </a>{new Date().getFullYear()}.
-        </div>
+        <Footer style={{ textAlign: 'center' }}> Copyright © <a href=''>COOPLAN </a>{new Date().getFullYear()}.</Footer>
     )
 }
 

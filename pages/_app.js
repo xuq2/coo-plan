@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-
+import '../styles/AntLayout.css'
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
