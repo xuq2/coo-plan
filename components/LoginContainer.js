@@ -98,7 +98,7 @@ export default function LoginContainer() {
             </div>
             <div>
                 <Link href="/signup" passHref><Button style={{marginRight: 20}} onClick={()=>createUser()}>Sign Up</Button></Link>
-                <Link href="/home" passHref><Button onClick={()=>createUser()}>Sign In</Button></Link>
+                <Button onClick={()=>createUser()}>Sign In</Button>
             </div>
         </div>
     );
