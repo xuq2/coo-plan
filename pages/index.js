@@ -14,20 +14,21 @@ export default function Login() {
 
       var requestOptions = {
         method: 'GET',
-        headers: myHeaders
+        headers: myHeaders,
+        credentials: "include"
       };
+
       fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
-        .then(response => response.text())
-        .then(result => {
-          const res = JSON.parse(result);
-          console.log(res);
-          if(res['statusCode'] === 401) {
+        .then(response => {
+          if(response.status !== 200) {
             router.push(`/login?redirect=${router.asPath}`);
           } else {
             console.log("Successfully Login!");
+            response.text().then(data => {
+              console.log(data);
+            });
           }
-        })
-        .catch(error => console.log('error', error));
+        });
     }
     fetchData();
   });

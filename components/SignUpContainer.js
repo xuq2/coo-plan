@@ -45,7 +45,7 @@ export default function SignUpContainer() {
 
                 fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
                     .then(response => response.text())
-                    .then(result => {console.log(result); router.push("/home")})
+                    .then(result => {console.log(result)})
                     .catch(error => console.log('error', error));
             } catch(e) {
                 console.log(e);

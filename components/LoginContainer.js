@@ -1,39 +1,57 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
 import 'antd/dist/antd.css';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function LoginContainer() {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
+    const router = useRouter();
 
-    async function createUser() {
-        if (username && email && password) {
+    async function login() {
+        if (username && password) {
+            notification.close('signInError')
             try {
                 var myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
 
                 var raw = JSON.stringify({
-                    "email": email,
                     "username": username,
                     "password": password
                 });
 
                 var requestOptions = {
-                    method: 'PUT',
+                    method: 'POST',
                     headers: myHeaders,
+                    credentials: "include",
                     body: raw
                 };
 
-                fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .catch(error => console.log('error', error));
+                fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user/login", requestOptions)
+                    .then(response => {
+                        if(response.status !== 200) {
+                            response.text().then(data => {
+                                openNotificationWithIcon('error', data);
+                            });
+                        } else {
+                            router.push(router.query.redirect || '/');
+                        }
+                    })
             } catch(e) {
                 console.log(e);
             }
         }
     }
+
+    const openNotificationWithIcon = (type, description) => {
+        notification[type]({
+          message: 'Sign In Error',
+          description: description,
+          duration: 0,
+          key: 'signInError'
+        });
+      };
 
     function removeFocus(e) {
         var target = e.target.parentElement;
@@ -45,8 +63,6 @@ export default function LoginContainer() {
           if(target.classList.contains('not-focused') == false){
             void target.offsetWidth;
             target.classList.add('not-focused');
-            // console.log("removing focus");
-            // console.log(target);
           }
         }
       }
@@ -59,8 +75,6 @@ export default function LoginContainer() {
         if(target.classList.contains('focused') == false){
           void target.offsetWidth;
           target.classList.add('focused');
-          // console.log("adding focus");
-          // console.log(target);
         }
       }
       
@@ -98,7 +112,7 @@ export default function LoginContainer() {
             </div>
             <div>
                 <Link href="/signup" passHref><Button style={{marginRight: 20}} onClick={()=>createUser()}>Sign Up</Button></Link>
-                <Button onClick={()=>createUser()}>Sign In</Button>
+                <Button onClick={()=>login()}>Sign In</Button>
             </div>
         </div>
     );
