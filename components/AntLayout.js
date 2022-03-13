@@ -10,9 +10,9 @@ export default function AntLayout(props) {
   return (
     <div>
       {/* Title name */}
-      <Head>
-        <title>CooPlan</title>
-      </Head>
+      {/* <Head> */}
+        {/* <title>CooPlan</title> */}
+      {/* </Head> */}
       <AntHeader hasProfile={props.hasProfile}/>
       
       <Layout style={{ minHeight: "100vh" }}>
