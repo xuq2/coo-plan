@@ -1,12 +1,13 @@
 import AntLayout from '../components/AntLayout';
 import LoginContainer from '../components/LoginContainer';
+import LoginLayout from '../components/LoginLayout';
 
 export default function Login() {
   const hasProfile = false;
   const hasSideBar = false;
   return (
-    <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
+    <LoginLayout hasProfile={hasProfile}>
       <LoginContainer/>
-    </AntLayout>
+    </LoginLayout>
   );
 }
