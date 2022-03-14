@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import AntLayout from '../components/AntLayout';
+import LoginContainer from '../components/LoginContainer';
+import LoginLayout from '../components/LoginLayout';
+
 
 export default function Login() {
   const router = useRouter();
@@ -34,8 +37,9 @@ export default function Login() {
   });
 
   return (
-    <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
-      <h1>Home</h1>
-    </AntLayout>
+
+    <LoginLayout hasProfile={hasProfile}>
+      <LoginContainer/>
+    </LoginLayout>
   );
 }
