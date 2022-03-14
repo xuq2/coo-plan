@@ -1,7 +1,7 @@
 import { Col, Layout, Row } from "antd";
 import React from "react";
 import ProfileIcon from "./ProfileIcon";
-import Link from 'next/Link';
+import Link from 'next/link';
 
 const { Header } = Layout;
 export function AntHeader(props) {

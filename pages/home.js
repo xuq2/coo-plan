@@ -1,42 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import AntLayout from "../components/AntLayout";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import LoginLayout from "../components/LoginLayout";
 
 export default function Home() {
   const hasProfile = true;
   const hasSideBar = true;
   const router = useRouter();
-
+  const [isShown, setIsShown] = useState(false);
   useEffect(() => {
     async function fetchData() {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       var requestOptions = {
-        method: 'GET',
+        method: "GET",
         headers: myHeaders,
-        credentials: "include"
+        credentials: "include",
       };
 
-      fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
-        .then(response => {
-          if(response.status !== 200) {
+      fetch(
+        "https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user",
+        requestOptions
+      )
+        .then((response) => {
+          if (response.status !== 200) {
             router.push(`/login?redirect=${router.asPath}`);
+            setIsShown(false)
           } else {
             console.log("Successfully Login!");
-            response.text().then(data => {
+            setIsShown(true)
+            response.text().then((data) => {
+              
               console.log(data);
             });
           }
         })
-        .catch(error => console.log(error));
+        .catch((error) => console.log(error));
     }
     fetchData();
   });
 
   return (
-    <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
-        <h1>lhome</h1>
-    </AntLayout>
+    <>
+      {isShown ? (
+        <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
+          <h1>lhome</h1>
+        </AntLayout>
+      ) : (
+        <LoginLayout hasProfile={false} hasSideBar={false}>
+        </LoginLayout>
+      )}
+    </>
   );
 }
