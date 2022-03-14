@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, notification } from 'antd';
+import { Button, notification, Result } from 'antd';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import 'antd/dist/antd.css';
 
 export default function SignUpContainer() {
@@ -8,7 +9,7 @@ export default function SignUpContainer() {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ confirmPassword, setConfirmPassword ] = useState("");
-    const [ showError, setShowError ] = useState("");
+    const [ signUpSuccess, setSignUpSuccess ] = useState(false);
     const router = useRouter();
 
     async function createUser() {
@@ -38,14 +39,22 @@ export default function SignUpContainer() {
                 });
 
                 var requestOptions = {
-                    method: 'PUT',
+                    method: 'POST',
                     headers: myHeaders,
                     body: raw
                 };
 
                 fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
-                    .then(response => response.text())
-                    .then(result => {console.log(result); router.push("/home")})
+                    .then(response => {
+                        if(response.status === 200) {
+                            setSignUpSuccess(true);
+                        } else {
+                            setSignUpSuccess(false);
+                            response.text().then(error => {
+                                openNotificationWithIcon('error', error);
+                            });
+                        }
+                    })
                     .catch(error => console.log('error', error));
             } catch(e) {
                 console.log(e);
@@ -88,66 +97,81 @@ export default function SignUpContainer() {
       };
 
     return (
-        <div style={{height: 420}} className='center-container'>
-            <div>
-                <h1 style={{color: 'white', fontSize: 24, marginBottom: 0}}>Create an Account</h1>
-            </div>
-            <div className='input-wrapper'>
-                <div className="input-field">
-                    <input
-                        type="text"
-                        value={email}
-                        name="email"
-                        spellCheck="false"
-                        className="info-input"
-                        onFocus={(e)=>applyFocus(e)}
-                        onBlur={(e)=>removeFocus(e)}
-                        onChange={(e)=>setEmail(e.target.value)}/>
-                    <label className="name-label">Email</label>
-                    <span className="input-placeholder">Email</span>
+        <div>
+            {signUpSuccess ? 
+                <div style={{backgroundColor: 'white', width: 'fit-content', height: 'fit-content'}} className='center-container'>
+                    <Result
+                        status="success"
+                        title="Successfully Sign Up for CooPlan!"
+                        extra={<Link href="/login" passHref><Button type='primary'>Log in</Button></Link>}
+                    />
                 </div>
-                <div className="input-field">
-                    <input
-                        type="text"
-                        value={username}
-                        name="username"
-                        spellCheck="false"
-                        className="info-input"
-                        onFocus={(e)=>applyFocus(e)}
-                        onBlur={(e)=>removeFocus(e)}
-                        onChange={(e)=>setUsername(e.target.value)}/>
-                    <label className="name-label">Username</label>
-                    <span className="input-placeholder">Username</span>
+            :
+            (
+                <div style={{height: 420}} className='center-container'>
+                    <div>
+                        <h1 style={{color: 'white', fontSize: 24, marginBottom: 0}}>Create an Account</h1>
+                    </div>
+                    <div className='input-wrapper'>
+                        <div className="input-field">
+                            <input
+                                type="text"
+                                value={email}
+                                name="email"
+                                spellCheck="false"
+                                className="info-input"
+                                onFocus={(e)=>applyFocus(e)}
+                                onBlur={(e)=>removeFocus(e)}
+                                onChange={(e)=>setEmail(e.target.value)}/>
+                            <label className="name-label">Email</label>
+                            <span className="input-placeholder">Email</span>
+                        </div>
+                        <div className="input-field">
+                            <input
+                                type="text"
+                                value={username}
+                                name="username"
+                                spellCheck="false"
+                                className="info-input"
+                                onFocus={(e)=>applyFocus(e)}
+                                onBlur={(e)=>removeFocus(e)}
+                                onChange={(e)=>setUsername(e.target.value)}/>
+                            <label className="name-label">Username</label>
+                            <span className="input-placeholder">Username</span>
+                        </div>
+                        <div className="input-field">
+                            <input
+                                type="password"
+                                value={password}
+                                name="password"
+                                spellCheck="false"
+                                className="info-input"
+                                onFocus={(e)=>applyFocus(e)}
+                                onBlur={(e)=>removeFocus(e)}
+                                onChange={(e)=>setPassword(e.target.value)}/>
+                            <label className="name-label">Password</label>
+                            <span className="input-placeholder">Password</span>
+                        </div>
+                        <div className="input-field">
+                            <input
+                                type="password"
+                                value={confirmPassword}
+                                name="confirmPassword"
+                                spellCheck="false"
+                                className="info-input"
+                                onFocus={(e)=>applyFocus(e)}
+                                onBlur={(e)=>removeFocus(e)}
+                                onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                            <label className="name-label">Confirm Password</label>
+                            <span className="input-placeholder">Confirm Password</span>
+                        </div>
+                    </div>
+                    
+                    <Button onClick={()=>createUser()}>Sign Up</Button>
                 </div>
-                <div className="input-field">
-                    <input
-                        type="password"
-                        value={password}
-                        name="password"
-                        spellCheck="false"
-                        className="info-input"
-                        onFocus={(e)=>applyFocus(e)}
-                        onBlur={(e)=>removeFocus(e)}
-                        onChange={(e)=>setPassword(e.target.value)}/>
-                    <label className="name-label">Password</label>
-                    <span className="input-placeholder">Password</span>
-                </div>
-                <div className="input-field">
-                    <input
-                        type="password"
-                        value={confirmPassword}
-                        name="confirmPassword"
-                        spellCheck="false"
-                        className="info-input"
-                        onFocus={(e)=>applyFocus(e)}
-                        onBlur={(e)=>removeFocus(e)}
-                        onChange={(e)=>setConfirmPassword(e.target.value)}/>
-                    <label className="name-label">Confirm Password</label>
-                    <span className="input-placeholder">Confirm Password</span>
-                </div>
-            </div>
-            
-            <Button onClick={()=>createUser()}>Sign Up</Button>
+            )
+            }
         </div>
+        
     );
 }
