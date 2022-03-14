@@ -35,7 +35,7 @@ export default function LoginContainer() {
                                 openNotificationWithIcon('error', data);
                             });
                         } else {
-                            router.push(router.query.redirect || '/');
+                            router.push(router.query.redirect || '/home');
                         }
                     })
             } catch(e) {
@@ -112,7 +112,7 @@ export default function LoginContainer() {
             </div>
             <div>
                 <Link href="/signup" passHref><Button style={{marginRight: 20}}>Sign Up</Button></Link>
-                <Link href="/home" passHref><Button onClick={()=>createUser()}>Sign In</Button></Link>
+                <Button onClick={()=>login()}>Sign In</Button>
             </div>
         </div>
     );
