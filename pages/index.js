@@ -1,45 +1,15 @@
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import AntLayout from '../components/AntLayout';
-import LoginContainer from '../components/LoginContainer';
+import Link from 'next/link';
 import LoginLayout from '../components/LoginLayout';
+import { Button } from 'antd';
 
 
 export default function Login() {
-  const router = useRouter();
-  const hasProfile = true;
-  const hasSideBar = true;
-
-  useEffect(() => {
-    async function fetchData() {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        credentials: "include"
-      };
-
-      fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user", requestOptions)
-        .then(response => {
-          if(response.status !== 200) {
-            router.push(`/login?redirect=${router.asPath}`);
-          } else {
-            console.log("Successfully Login!");
-            response.text().then(data => {
-              console.log(data);
-            });
-          }
-        });
-    }
-    fetchData();
-  });
+  const hasProfile = false;
 
   return (
-
     <LoginLayout hasProfile={hasProfile}>
-      <LoginContainer/>
+      <Link href="/login" passHref><Button type='primary'>Log In</Button></Link>
     </LoginLayout>
   );
 }
