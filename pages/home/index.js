@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AntLayout from "../components/AntLayout";
+import AntLayout from "../../components/AntLayout";
 import { useRouter } from "next/router";
-import LoginLayout from "../components/LoginLayout";
+import LoginLayout from "../../components/LoginLayout";
+import HomeDisplay from "../../components/HomeDisplay";
 
 export default function Home() {
   const hasProfile = true;
@@ -45,7 +46,7 @@ export default function Home() {
     <>
       {isShown ? (
         <AntLayout hasProfile={hasProfile} hasSideBar={hasSideBar}>
-          <h1>lhome</h1>
+          <HomeDisplay/>
         </AntLayout>
       ) : (
         <LoginLayout hasProfile={false} hasSideBar={false}>

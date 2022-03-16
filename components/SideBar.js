@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Divider, Layout, Menu } from "antd";
+import { Button, DatePicker, Divider, Layout, Menu, Space, notification } from "antd";
 
 import {
   DesktopOutlined,
@@ -10,6 +10,50 @@ const { Sider } = Layout;
 
 function SideBar() {
   const [collapsed, setCollapsed] = useState(false);
+  const [ planYear, setPlanYear ] = useState("");
+
+  async function addNewPlan() {
+    if(planYear) {
+      try {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "year": planYear
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            credentials: 'include'
+        };
+
+        fetch("https://ij5p8quwsi.execute-api.us-west-2.amazonaws.com/dev/user/new-plan", requestOptions)
+        .then(response => {
+            if(response.status === 200) {
+              console.log("Successfully added new plan")
+            } else {
+              response.text().then(error => {
+                  openNotificationWithIcon('error', error);
+              });
+            }
+        })
+        .catch(error => console.log('error', error));
+      } catch(e) {
+          console.log(e);
+      }
+    }
+  }
+
+  const openNotificationWithIcon = (type, description) => {
+    notification[type]({
+      message: 'Failed to make a new plan',
+      description: description,
+      duration: 0,
+      key: 'makeNewPlanError'
+    });
+  };
 
   return (
     // TODO:
@@ -40,9 +84,13 @@ function SideBar() {
           </Menu.Item>
           <Divider/>
           {/* TODO： 回收时不会隐藏 */}
-          <Menu.Item key="4" title="Make new plan" icon={<DesktopOutlined /> } >
-            
-          <Button>Make new plan</Button>
+          <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+          
+          <Space direction="vertical">
+          <Button onClick={()=>addNewPlan()}>Make new plan</Button>
+          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString); console.log(dateString)}} picker="year"/>
+          </Space>
+
           </Menu.Item>
         </Menu>
       </Sider>
