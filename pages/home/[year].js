@@ -82,6 +82,10 @@ export default function YearItem() {
         setGoalModalVisible(true);
     }
         
+    // function handleClose() {
+    //     setGoalModalVisible(false);
+    // }
+
     function handleCancel() {
         if(formComponentRef.current) {
             formComponentRef.current.resetForm();
