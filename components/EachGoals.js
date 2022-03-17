@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from "react";
 import moment from "moment";
 
+
 export default function EachGoals(props) {
     const month = [9,10,11,12,1,2,3,4,5,6,7,8];
 
@@ -19,6 +20,12 @@ export default function EachGoals(props) {
                     </>
                 ))}
                 
+            </Row>
+            <Row className="term-row">
+                <Col className="fall terms" span={8} >Fall</Col>
+                <Col className="winter terms" span={5}>Winter</Col>
+                <Col className="spring terms" span={6}>Spring</Col>
+                <Col className="summer terms" span={5}>Summer</Col>                
             </Row>
             <Row className="goal-col">
                 {props.allData.map(x => {
@@ -44,6 +51,7 @@ export default function EachGoals(props) {
                     <>
                         <Col className="goal-col"span={start_col*2}></Col>
                         <Col className="goal-col" span={month_window*2}>
+                        <Divider className="divider">
                             <Tag 
                                 onClick={()=>props.editGoal(x)}
                                 style={{width: '100%', textAlign: 'center', cursor: 'pointer'}} 
@@ -51,12 +59,15 @@ export default function EachGoals(props) {
                             {/* {moment(x.goal_time.start_time).format('MM')} */}
                             {x.goal_name}
                             </Tag>
+                            </Divider>
                         </Col>
                         <Col className="goal-col" span={24-start_col*2-month_window*2}></Col>
+                        
                     </>
                     )
                 })}
             </Row>
+            
         </>
     )
 }
