@@ -113,7 +113,7 @@ export default function YearItem() {
         <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal}>
             <Title className='top-year' level={2}>Year: {year}</Title>
             {/* <h1>This is {year}</h1> */}
-            <EachGoals allData={allData}/>
+            <EachGoals allData={allData} editGoal={showSpecificGoal}/>
             <Modal
                 title={modalTitle}
                 visible={goalModalVisible}
