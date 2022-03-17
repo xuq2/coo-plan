@@ -195,6 +195,11 @@ h2.ant-typography{
     width: 120px !important;
   }
 }
+@media (max-width: 768px) {
+  .each-year{
+    width: 160px !important;
+  }
+}
 @media (max-width: 550px) {
   .terms {
     font-size: 11px;
