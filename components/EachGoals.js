@@ -13,7 +13,7 @@ export default function EachGoals(props) {
                 <Divider >Month</Divider>
                 {month.map(x => (
                     <>
-                <Col span={2} > 
+                <Col span={2} lg={2}> 
                     {x}
                 </Col>
                     </>

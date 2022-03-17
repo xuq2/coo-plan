@@ -4,6 +4,8 @@ import AntLayout from '../../components/AntLayout';
 import EachGoals from '../../components/EachGoals';
 import React, { useEffect, useState, useRef } from "react";
 import AddGoalForm from '../../components/AddGoalForm';
+import { Typography } from 'antd';
+const { Title } = Typography;
 
 export default function YearItem() {
     const router = useRouter();
@@ -109,8 +111,9 @@ export default function YearItem() {
 
     return (
         <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal}>
-            <h1>This is {year}</h1>
-            <EachGoals allData={allData} editGoal={showSpecificGoal}/>
+            <Title className='top-year' level={2}>Year: {year}</Title>
+            {/* <h1>This is {year}</h1> */}
+            <EachGoals allData={allData}/>
             <Modal
                 title={modalTitle}
                 visible={goalModalVisible}
