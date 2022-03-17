@@ -88,14 +88,21 @@ function SideBar(props) {
           </Menu.Item>
           <Divider/>
           {/* TODO： 回收时不会隐藏 */}
-          <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<DesktopOutlined /> } >
-          
-          <Space direction="vertical">
-          <Button onClick={()=>addNewPlan()}>Make new plan</Button>
-          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
-          </Space>
+          {props.isDetailPage ? (
+            <Menu.Item key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+              <Button onClick={props.onAddGoalClick}>Add a goal</Button>
+            </Menu.Item>
+          )
+          : (
+            <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<DesktopOutlined /> } >
 
-          </Menu.Item>
+              <Space direction="vertical">
+              <Button onClick={()=>addNewPlan()}>Make new plan</Button>
+              <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
+              </Space>
+            </Menu.Item>
+          )}
+
         </Menu>
       </Sider>
     </>
