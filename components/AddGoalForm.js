@@ -1,5 +1,5 @@
 import { Form, Input, Row, Col, Checkbox, DatePicker, Select, Tag, Divider, notification } from 'antd';
-import { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
 import moment from 'moment';
 
 const { RangePicker } = DatePicker; 
@@ -16,6 +16,21 @@ function AddGoalForm(props, ref) {
     const [ form ] = Form.useForm();
     const [ goalTasks, setGoalTasks ] = useState([{"toggle": false, "msg": ""}]);
     const [ goalResourceLink, setGoalResourceLink ] = useState("");
+
+    useEffect(()=>{
+        const goal = props.goal;
+        if(Object.keys(goal).length !== 0) {
+            console.log(goal);
+            setGoalName(goal.goal_name);
+            setGoalColor(goal.color);
+            setGoalPriority(goal.priority);
+            setGoalTerms(goal.terms);
+            setGoalDescription(goal.description);
+            setGoalTasks(goal.task);
+            setGoalResourceLink(goal.resource_link);
+            setGoalTime(goal.goal_time);
+        }
+    }, [props.goal]);
 
     const openNotificationWithIcon = (type, description) => {
         notification[type]({
@@ -89,8 +104,19 @@ function AddGoalForm(props, ref) {
                     console.log(e);
                 }
             }
+        },
+        resetForm() {
+            console.log("Reset form");
+            setGoalName(""); 
+            setGoalColor("red");
+            setGoalPriority("high");
+            setGoalTerms([]); 
+            setGoalTime({});
+            setGoalDescription("");
+            setGoalTasks([{"toggle": false, "msg": ""}]);
+            setGoalResourceLink("");
         }
-    }))
+    }));
 
     function resetForm() {
         console.log("Reset form");

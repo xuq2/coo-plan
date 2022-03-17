@@ -14,6 +14,8 @@ export default function YearItem() {
     const formComponentRef = useRef();
     const [ goalModalVisible, setGoalModalVisible ] = useState(false);
     const [ confirmLoading, setConfirmLoading ] = useState(false);
+    const [ modalTitle, setModalTitle ] = useState("Add a goal");
+    const [ currentGoal, setCurrentGoal ] = useState({});
   
     useEffect(() => {
         async function fetchData() {
@@ -65,10 +67,25 @@ export default function YearItem() {
       });
   
     function showAddGoalModal () {
+        if(modalTitle === "Edit goal") {
+            if(formComponentRef.current) {
+                formComponentRef.current.resetForm();
+            }
+        }
+        setModalTitle("Add a goal");
         setGoalModalVisible(true)
+    }
+
+    function showSpecificGoal(goal) {
+        setModalTitle("Edit goal");
+        setCurrentGoal(goal);
+        setGoalModalVisible(true);
     }
         
     function handleCancel() {
+        if(formComponentRef.current) {
+            formComponentRef.current.resetForm();
+        }
         setGoalModalVisible(false);
     }
 
@@ -89,9 +106,9 @@ export default function YearItem() {
     return (
         <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal}>
             <h1>This is {year}</h1>
-            <EachGoals allData={allData}/>
+            <EachGoals allData={allData} editGoal={showSpecificGoal}/>
             <Modal
-                title="Add a goal"
+                title={modalTitle}
                 visible={goalModalVisible}
                 centered
                 okText="Submit"
@@ -100,7 +117,7 @@ export default function YearItem() {
                 onCancel={handleCancel}
                 confirmLoading={confirmLoading}
             >
-                <AddGoalForm syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleCancel} ref={formComponentRef}/>
+                <AddGoalForm goal={currentGoal} syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleCancel} ref={formComponentRef}/>
             </Modal>
         </AntLayout>
     );

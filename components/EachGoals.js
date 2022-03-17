@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Tag } from "antd";
+import { Col, Divider, Row, Tag, Button } from "antd";
 import React from "react";
 import moment from "moment";
 
@@ -43,7 +43,11 @@ export default function EachGoals(props) {
                     <>
                         <Col span={start_col*2}></Col>
                         <Col span={month_window*2}>
-                            <Tag style={{width: '100%', textAlign: 'center'}} color={x.color}>{moment(x.goal_time.start_time).format('MM')}</Tag>
+                            <Tag 
+                                onClick={()=>props.editGoal(x)}
+                                style={{width: '100%', textAlign: 'center', cursor: 'pointer'}} 
+                                color={x.color}>{x.goal_name}
+                            </Tag>
                         </Col>
                         <Col span={24-start_col*2-month_window*2}></Col>
                     </>
