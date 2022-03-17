@@ -5,9 +5,23 @@
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
 }
+
+
+.year-row {
+  border-radius: 10px;
+  height: 60px;
+}
+
+.site-card-wrapper {
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 0px;
+}
+
 .logo {
   font-size: 36px;
   color: #fff;
+
 }
 .ant-row-rtl #components-layout-demo-top-side-2 .logo {
   float: right;
@@ -21,11 +35,12 @@
 .site-layout {
   background-color: #d6e6ff !important;
 }
+
 .ant-layout-footer {
-  background-color: #d6e6ff;
+  background-color: #D6E6FF;
 }
 .ant-layout-sider-trigger {
-  background-color: #5f9fff !important;
+  background-color: #5F9FFF !important;
 }
 
 .center-container {
@@ -39,7 +54,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #5f9fff;
+  background-color: #5F9FFF;
   color: black;
   border-radius: 10px;
 }
@@ -48,6 +63,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+
 }
 
 .input-field {

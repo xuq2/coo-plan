@@ -12,7 +12,7 @@ export default function AntLayout(props) {
       <AntHeader hasProfile={props.hasProfile}/>
       
       <Layout style={{ minHeight: "100vh" }}>
-        {props.hasSideBar ? <SideBar /> : ''}
+        {props.hasSideBar ? <SideBar onAddNewPlan={props.onAddNewPlan}/> : ''}
         <Layout className="site-layout">
           {/* contents */}
           <Content
