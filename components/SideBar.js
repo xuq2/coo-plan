@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Button, DatePicker, Divider, Layout, Menu, Space, notification } from "antd";
-
+import Link from 'next/link'
 import {
   DesktopOutlined,
   PieChartOutlined,
+  SearchOutlined,
+  HomeOutlined,
+  SettingOutlined,
+  CarryOutOutlined,
+  FolderAddOutlined
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -68,7 +73,7 @@ function SideBar(props) {
       key: 'makeNewPlanError'
     });
   };
-
+  
   return (
     // TODO:
     <>
@@ -86,21 +91,21 @@ function SideBar(props) {
           mode="inline"
           
         >
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Home
+          <Menu.Item key="1" icon={<HomeOutlined />}>
+          <Link href='/home'>Home</Link>
           </Menu.Item>
           
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
+          <Menu.Item key="2" icon={<SearchOutlined />}>
             Search
           </Menu.Item>
-          <Menu.Item key="3" icon={<DesktopOutlined />}>
+          <Menu.Item key="3" icon={<SettingOutlined />}>
             Setting
           </Menu.Item>
           <Divider/>
           {/* TODO： 回收时不会隐藏 */}
           {props.isShowAddNewPlan ? (
             <>
-          <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+          <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<FolderAddOutlined /> } >
           <Space direction="vertical">
             <Button onClick={()=>addNewPlan()}>Make new plan</Button>
           <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
@@ -108,7 +113,7 @@ function SideBar(props) {
           </Menu.Item>
             </>
           )  : (
-            <Menu.Item key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+            <Menu.Item key="4" title="Add a goal" icon={<CarryOutOutlined /> } onClick={props.onAddGoalClick} >
               <Button onClick={props.onAddGoalClick}>Add a goal</Button>
             </Menu.Item>
           )}

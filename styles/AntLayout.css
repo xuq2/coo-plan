@@ -173,3 +173,28 @@ button {
 .goal-col {
   margin-bottom: 10px;
 }
+.top-year {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+h2.ant-typography{
+  margin-bottom: 0px;
+}
+@media (max-width: 1410px) {
+  .each-year{
+    width: 200px !important;
+  }
+}
+@media (max-width: 1200px) {
+  .each-year{
+    width: 150px !important;
+  }
+}
+@media (max-width: 854px) {
+  .each-year{
+    width: 120px !important;
+  }
+}
+/* .each-year {
+
+} */

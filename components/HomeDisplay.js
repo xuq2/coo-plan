@@ -10,8 +10,9 @@ export default function HomeDisplay({ planYears }) {
         <div className="site-card-wrapper">
             <Row gutter={32}>
                 {planYears.map(year=>
-                    <Col span={6} key={year} style={{marginBottom: 30}}>
+                    <Col span={6} key={year} style={{marginBottom: 30}} xs={24} sm={12} md={8} lg={6} >
                         <Card 
+                            className="each-year"   
                             hoverable 
                             style={{width: 250, height: 80, verticalAlign: 'center'}}
                             onClick={()=>{router.push(`${router.asPath}/${year}`)}}
