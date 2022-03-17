@@ -157,3 +157,7 @@ button {
 .inside-text {
   color: rgb(243, 188, 36);
 }
+
+.time-line {
+  padding: 5px 10px 0 10px;
+}

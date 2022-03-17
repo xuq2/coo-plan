@@ -1,14 +1,7 @@
-import { useRouter } from 'next/router';
-import AntLayout from '../../components/AntLayout';
-import EachGoals from '../../components/EachGoals';
-import React, { useEffect, useState } from "react";
+// TODO: 没写完
 
-export default function YearItem() {
-    const router = useRouter();
-    console.log("==router.query: ", router.query);
-    const [ allData, setAllData ] = useState([]);
-    const [isShown, setIsShown] = useState(false);
-    const year = router.query.year;
+function useGetAllData() {
+    const [ planYears, setPlanYears ] = useState([]);
     useEffect(() => {
         async function fetchData() {
           var myHeaders = new Headers();
@@ -36,16 +29,9 @@ export default function YearItem() {
                     console.log(12312312312)
                   }
                   if(data.length !== 0 && 'data' in data) {
-                      for (let i = 0; i < data.data.length; i++) {
-                          if(year == data.data[i].year) {
-                              console.log("found years", data.data[i].goals)
-                              setAllData(data.data[i].goals);
-                              break;
-                          }
-                          
-                      }
+                    setPlanYears(data.data.map(each => each.year));
                   }
-                  console.log(allData)
+                  console.log(data)
                 });
               }
             })
@@ -55,11 +41,7 @@ export default function YearItem() {
           fetchData();
         }
       });
-
-    return (
-        <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false}>
-            <h1>This is {year}</h1>
-            <EachGoals allData={allData}/>
-        </AntLayout>
-    );
+    return [planYears]
 }
+
+export default useGetAllData;

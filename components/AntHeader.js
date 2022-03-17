@@ -12,7 +12,7 @@ export function AntHeader(props) {
         {/* Logo */}
         <Row>
             <Col span={12}>
-            <div className="logo"><Link href="/home"><a><Image src="/logo.png" alt="Logo" layout="fixed" width={"200"} height={"65"} /></a></Link></div>
+            <div className="logo"><Link href="/home"><a><Image priority={true} src="/logo.png" alt="Logo" layout="fixed" width={"200"} height={"65"} /></a></Link></div>
             </Col>
             <Col span={12}>
             {props.hasProfile ? <ProfileIcon /> : ''}
