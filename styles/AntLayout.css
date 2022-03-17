@@ -6,6 +6,7 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
+
 .year-row {
   border-radius: 10px;
   height: 60px;
@@ -20,7 +21,7 @@
 .logo {
   font-size: 36px;
   color: #fff;
-  
+
 }
 .ant-row-rtl #components-layout-demo-top-side-2 .logo {
   float: right;
@@ -32,8 +33,9 @@
 }
 
 .site-layout {
-  background-color: #D6E6FF !important;
+  background-color: #d6e6ff !important;
 }
+
 .ant-layout-footer {
   background-color: #D6E6FF;
 }
@@ -115,7 +117,7 @@ input {
   outline: none;
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
   border: none;
 }
 
@@ -124,9 +126,9 @@ input[type=text]:focus {
     transform: scale(0);
   }
   100% {
-    top:-50%;
+    top: -50%;
     transform: scale(1);
-    color:white;
+    color: white;
   }
 }
 
@@ -145,4 +147,13 @@ input[type=text]:focus {
 
 button {
   border-radius: 7px !important;
+}
+.text-loop-container {
+  margin-top: 25px;
+}
+.text-loop {
+  color:#5f9fff
+}
+.inside-text {
+  color: rgb(243, 188, 36);
 }
