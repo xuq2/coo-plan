@@ -19,7 +19,7 @@ function SideBar(props) {
       try {
         props.allData.find(element => {
           if (element.toString().includes(planYear)) {
-            openNotificationWithIcon('error', 'Plan year already exists')
+            openNotificationWithIcon('error', 'Failed to create new plan', 'Plan year already exists')
           }
         });
         var myHeaders = new Headers();
@@ -40,13 +40,13 @@ function SideBar(props) {
         .then(response => {
             if(response.status === 200) {
               console.log("Successfully added new plan")
-              openNotificationWithIcon('success', 'Create successfully')
+              openNotificationWithIcon('success', 'Success', 'Create successfully')
               props.onAddNewPlan(planYear);
             } else if(response.status === 304) {
               // openNotificationWithIcon('error', 'Plan year already exists');
             }else {
               response.text().then(error => {
-                  openNotificationWithIcon('error', error);
+                  openNotificationWithIcon('error', 'Failed to create new plan', error);
               });
             }
         })
@@ -60,9 +60,9 @@ function SideBar(props) {
     }
   }
 
-  const openNotificationWithIcon = (type, description) => {
+  const openNotificationWithIcon = (type, message, description) => {
     notification[type]({
-      message: 'Failed to make a new plan',
+      message: message,
       description: description,
       duration: 2,
       key: 'makeNewPlanError'

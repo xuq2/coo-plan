@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
 import { Modal} from 'antd';
 import { useRouter } from 'next/router';
 import AntLayout from '../../components/AntLayout';
 import EachGoals from '../../components/EachGoals';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AddGoalForm from '../../components/AddGoalForm';
 
 export default function YearItem() {
@@ -46,7 +45,9 @@ export default function YearItem() {
                       for (let i = 0; i < data.data.length; i++) {
                           if(year == data.data[i].year) {
                               console.log("found years", data.data[i].goals)
-                              setAllData(data.data[i].goals);
+                              if(data.data[i].goals) {
+                                setAllData(data.data[i].goals);
+                              }
                               break;
                           }
                           
