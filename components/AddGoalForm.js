@@ -63,6 +63,17 @@ function AddGoalForm(props, ref) {
                         .then(response => {
                             if(response.status === 200) {
                                 console.log("Successfully added goal");
+                                const goalData = {
+                                    "goal_name": goalName,
+                                    "color": goalColor,
+                                    "priority": goalPriority,
+                                    "task": goalTasks,
+                                    "terms": goalTerms,
+                                    "goal_time": goalTime,
+                                    "description": goalDescription,
+                                    "resource_link": goalResourceLink
+                                }
+                                props.syncData(goalData);
                                 resetForm();
                                 props.setConfirmLoading(false);
                                 props.closeForm();

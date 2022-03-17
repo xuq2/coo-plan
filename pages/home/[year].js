@@ -82,6 +82,10 @@ export default function YearItem() {
         }
     }
 
+    function addGoalToData(goal) {
+        setAllData(oldData=>[...oldData, goal]);
+    }
+
     return (
         <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal}>
             <h1>This is {year}</h1>
@@ -96,7 +100,7 @@ export default function YearItem() {
                 onCancel={handleCancel}
                 confirmLoading={confirmLoading}
             >
-                <AddGoalForm setConfirmLoading={setLoading} closeForm={handleCancel} ref={formComponentRef}/>
+                <AddGoalForm syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleCancel} ref={formComponentRef}/>
             </Modal>
         </AntLayout>
     );
