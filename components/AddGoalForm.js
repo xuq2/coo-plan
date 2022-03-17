@@ -137,7 +137,7 @@ function AddGoalForm(props, ref) {
             <Row justify='space-between'>
                 <Col span={10}>
                     <Form.Item label="Name a goal">
-                        <Input value={goalName} onChange={(e)=>setGoalName(e.target.value)}/>
+                        <Input maxLength={15} showCount value={goalName} onChange={(e)=>setGoalName(e.target.value)}/>
                     </Form.Item>
                 </Col>
                 <Col>

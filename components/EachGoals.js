@@ -44,7 +44,10 @@ export default function EachGoals(props) {
                     <>
                         <Col className="goal-col"span={start_col*2}></Col>
                         <Col className="goal-col" span={month_window*2}>
-                            <Tag style={{width: '100%', textAlign: 'center'}} color={x.color}>{moment(x.goal_time.start_time).format('MM')}</Tag>
+                            <Tag style={{width: '100%', textAlign: 'center'}} color={x.color}>
+                            {/* {moment(x.goal_time.start_time).format('MM')} */}
+                            {x.goal_name}
+                            </Tag>
                         </Col>
                         <Col className="goal-col" span={24-start_col*2-month_window*2}></Col>
                     </>
