@@ -2,9 +2,10 @@ import { Avatar,Dropdown, Menu } from "antd";
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
 import Link from 'next/link'
+import { OmitProps } from "antd/lib/transfer/ListBody";
 
 //TODO: to be applied in pages
-function ProfileIcon() {
+function ProfileIcon(props) {
   const router = useRouter();
   const handleClick = e=> {
     // console.log(e.key)
@@ -72,7 +73,7 @@ function ProfileIcon() {
       <Dropdown overlay={menu} trigger={["click"]} placement="bottom" >
         <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
           <Avatar alt="A" size="large">
-            A
+            {props.initial.toUpperCase()}
           </Avatar>
         </a>
       </Dropdown>

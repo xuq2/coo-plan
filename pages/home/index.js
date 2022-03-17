@@ -8,6 +8,7 @@ export default function Home() {
   const router = useRouter();
   const [isShown, setIsShown] = useState(false);
   const [ planYears, setPlanYears ] = useState([]);
+  const [ username, setUsername ] = useState("");
 
   function addedNewPlan(year) {
     setPlanYears(oldYears => [...oldYears, year].sort((a,b)=>{
@@ -42,6 +43,7 @@ export default function Home() {
                 console.log(12312312312)
               }
               if(data.length !== 0 && 'data' in data) {
+                setUsername(data.username);
                 setPlanYears(data.data.map(each => each.year));
               }
               console.log(data)
@@ -58,7 +60,7 @@ export default function Home() {
   return (
     <>
       {isShown ? (
-        <AntLayout hasProfile={true} hasSideBar={true} onAddNewPlan={addedNewPlan} isShowAddNewPlan={true} allData={planYears}>
+        <AntLayout hasProfile={true} hasSideBar={true} onAddNewPlan={addedNewPlan} isShowAddNewPlan={true} allData={planYears} username={username}>
           <HomeDisplay planYears={planYears}/>
         </AntLayout>
       ) : (

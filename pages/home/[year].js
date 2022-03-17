@@ -11,6 +11,7 @@ export default function YearItem() {
     const router = useRouter();
     console.log("==router.query: ", router.query);
     const [ allData, setAllData ] = useState([]);
+    const [ username, setUsername ] = useState("");
     const [isShown, setIsShown] = useState(false);
     const year = router.query.year;
     const formComponentRef = useRef();
@@ -48,7 +49,9 @@ export default function YearItem() {
                   if(data.length !== 0 && 'data' in data) {
                       for (let i = 0; i < data.data.length; i++) {
                           if(year == data.data[i].year) {
-                              console.log("found years", data.data[i].goals)
+                              console.log("found years", data.data[i].goals);
+                              console.log(data.username);
+                              setUsername(data.username);
                               if(data.data[i].goals) {
                                 setAllData(data.data[i].goals);
                               }
@@ -111,7 +114,7 @@ export default function YearItem() {
     }
 
     return (
-        <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal}>
+        <AntLayout hasProfile={true} hasSideBar={true} isShowAddNewPlan={false} onAddGoalClick={showAddGoalModal} username={username} allData={allData}>
             <Title className='top-year' level={2}>Year: {year}</Title>
             {/* <h1>This is {year}</h1> */}
             <EachGoals allData={allData} editGoal={showSpecificGoal}/>

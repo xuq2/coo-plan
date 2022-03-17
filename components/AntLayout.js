@@ -9,7 +9,7 @@ const { Content } = Layout;
 export default function AntLayout(props) {
   return (
     <div>
-      <AntHeader hasProfile={props.hasProfile}/>
+      <AntHeader hasProfile={props.hasProfile} username={props.username}/>
       
       <Layout style={{ minHeight: "100vh" }}>
         {props.hasSideBar ? <SideBar onAddNewPlan={props.onAddNewPlan} onAddGoalClick={props.onAddGoalClick} isShowAddNewPlan={props.isShowAddNewPlan} allData={props.allData}/> : ''}
