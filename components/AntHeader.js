@@ -15,7 +15,7 @@ export function AntHeader(props) {
             <div className="logo"><Link href="/home"><a><Image priority={true} src="/logo.png" alt="Logo" layout="fixed" width={"200"} height={"65"} /></a></Link></div>
             </Col>
             <Col span={12}>
-            {props.hasProfile ? <ProfileIcon /> : ''}
+            {props.hasProfile ? (props.username ? <ProfileIcon initial={props.username[0]}/> : <ProfileIcon initial=""/>): ''}
             </Col>
         </Row>
         
