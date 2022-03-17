@@ -166,6 +166,6 @@ button {
   width: 100%;
 }
 
-/* .tasks-checkbox .ant-checkbox { 
-  width: auto;
-} */
+.time-line {
+  padding: 5px 10px 0 10px;
+}
