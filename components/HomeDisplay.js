@@ -1,15 +1,15 @@
+import { useState, useEffect } from 'react'
 import { Row, Col, Card } from "antd"
 import { useRouter } from "next/router";
 
-export default function HomeDisplay() {
-    const years = ["2018","2019","2020","2021"];
+export default function HomeDisplay({ planYears }) {
     const router = useRouter();
 
     return (
         <>
         <div className="site-card-wrapper">
             <Row gutter={32}>
-                {years.map(year=>
+                {planYears.map(year=>
                     <Col span={6} key={year} style={{marginBottom: 30}}>
                         <Card 
                             hoverable 

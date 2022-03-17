@@ -8,18 +8,19 @@ import {
 
 const { Sider } = Layout;
 
-function SideBar() {
+function SideBar(props) {
   const [collapsed, setCollapsed] = useState(false);
   const [ planYear, setPlanYear ] = useState("");
 
   async function addNewPlan() {
+    notification.close('makeNewPlanError');
     if(planYear) {
       try {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            "year": planYear
+            "year": parseInt(planYear)
         });
 
         var requestOptions = {
@@ -33,7 +34,10 @@ function SideBar() {
         .then(response => {
             if(response.status === 200) {
               console.log("Successfully added new plan")
-            } else {
+              props.onAddNewPlan(planYear);
+            } else if(response.status === 304) {
+              openNotificationWithIcon('error', 'Plan year already exists');
+            }else {
               response.text().then(error => {
                   openNotificationWithIcon('error', error);
               });
@@ -88,7 +92,7 @@ function SideBar() {
           
           <Space direction="vertical">
           <Button onClick={()=>addNewPlan()}>Make new plan</Button>
-          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString); console.log(dateString)}} picker="year"/>
+          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
           </Space>
 
           </Menu.Item>
