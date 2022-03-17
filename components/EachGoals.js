@@ -1,4 +1,5 @@
-import { Col, Divider, Row, Tag } from "antd";
+import { Card, Col, Divider, Row, Tag } from "antd";
+import Link from 'next/link'
 import React from "react";
 import moment from "moment";
 
@@ -19,7 +20,7 @@ export default function EachGoals(props) {
                 ))}
                 
             </Row>
-            <Row>
+            <Row className="goal-col">
                 {props.allData.map(x => {
                     const start_month = parseInt(moment(x.goal_time.start_time).format('MM'));
                     const end_month = parseInt(moment(x.goal_time.end_time).format('MM'));
@@ -41,11 +42,11 @@ export default function EachGoals(props) {
                     // console.log("month_window: " + month_window);
                     return(
                     <>
-                        <Col span={start_col*2}></Col>
-                        <Col span={month_window*2}>
+                        <Col className="goal-col"span={start_col*2}></Col>
+                        <Col className="goal-col" span={month_window*2}>
                             <Tag style={{width: '100%', textAlign: 'center'}} color={x.color}>{moment(x.goal_time.start_time).format('MM')}</Tag>
                         </Col>
-                        <Col span={24-start_col*2-month_window*2}></Col>
+                        <Col className="goal-col" span={24-start_col*2-month_window*2}></Col>
                     </>
                     )
                 })}
