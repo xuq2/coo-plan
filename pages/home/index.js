@@ -40,7 +40,10 @@ export default function Home() {
             console.log("Successfully Login!");
             setIsShown(true)
             response.json().then((data) => {
-              setPlanYears(data[0]['years']);
+              if(data.length != 0) {
+                setPlanYears(data[0]['years']);
+              }
+              console.log(data)
             });
           }
         })
