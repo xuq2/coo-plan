@@ -157,3 +157,15 @@ button {
 .inside-text {
   color: rgb(243, 188, 36);
 }
+
+.tasks-checkbox {
+  width: 100%;
+}
+
+.ant-checkbox + span {
+  width: 100%;
+}
+
+/* .tasks-checkbox .ant-checkbox { 
+  width: auto;
+} */
