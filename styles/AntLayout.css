@@ -158,6 +158,14 @@ button {
   color: rgb(243, 188, 36);
 }
 
+.tasks-checkbox {
+  width: 100%;
+}
+
+.ant-checkbox + span {
+  width: 100%;
+}
+
 .time-line {
   padding: 5px 10px 0 10px;
 }

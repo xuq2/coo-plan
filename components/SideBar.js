@@ -98,7 +98,6 @@ function SideBar(props) {
           </Menu.Item>
           <Divider/>
           {/* TODO： 回收时不会隐藏 */}
-          
           {props.isShowAddNewPlan ? (
             <>
           <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<DesktopOutlined /> } >
@@ -108,9 +107,11 @@ function SideBar(props) {
           </Space>
           </Menu.Item>
             </>
-          )  : ''}
-          
-
+          )  : (
+            <Menu.Item key="4" title="Make new plan" icon={<DesktopOutlined /> } >
+              <Button onClick={props.onAddGoalClick}>Add a goal</Button>
+            </Menu.Item>
+          )}
         </Menu>
       </Sider>
     </>
