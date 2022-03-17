@@ -75,6 +75,7 @@ export default function YearItem() {
             }
         }
         setModalTitle("Add a goal");
+        setCurrentGoal({});
         setGoalModalVisible(true)
     }
 
@@ -84,16 +85,16 @@ export default function YearItem() {
         setGoalModalVisible(true);
     }
         
-    // function handleClose() {
-    //     setGoalModalVisible(false);
-    // }
-
-    function handleCancel() {
-        if(formComponentRef.current) {
-            formComponentRef.current.resetForm();
-        }
+    function handleClose() {
         setGoalModalVisible(false);
     }
+
+    // function handleCancel() {
+    //     if(formComponentRef.current) {
+    //         formComponentRef.current.resetForm();
+    //     }
+    //     setGoalModalVisible(false);
+    // }
 
     function setLoading(status) {
         setConfirmLoading(status);
@@ -121,10 +122,10 @@ export default function YearItem() {
                 okText="Submit"
                 onOk={handleSubmit}
                 cancelText="Cancel"
-                onCancel={handleCancel}
+                onCancel={handleClose}
                 confirmLoading={confirmLoading}
             >
-                <AddGoalForm goal={currentGoal} syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleCancel} ref={formComponentRef}/>
+                <AddGoalForm goal={currentGoal} syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleClose} ref={formComponentRef}/>
             </Modal>
         </AntLayout>
     );
