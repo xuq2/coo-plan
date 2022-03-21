@@ -99,6 +99,7 @@ export default function YearItem() {
     //     setGoalModalVisible(false);
     // }
 
+
     function setLoading(status) {
         setConfirmLoading(status);
     }
@@ -120,6 +121,7 @@ export default function YearItem() {
             <EachGoals allData={allData} editGoal={showSpecificGoal}/>
             <Modal
                 title={modalTitle}
+
                 visible={goalModalVisible}
                 centered
                 okText="Submit"
@@ -129,6 +131,7 @@ export default function YearItem() {
                 confirmLoading={confirmLoading}
             >
                 <AddGoalForm goal={currentGoal} syncData={addGoalToData} setConfirmLoading={setLoading} closeForm={handleClose} ref={formComponentRef}/>
+
             </Modal>
         </AntLayout>
     );

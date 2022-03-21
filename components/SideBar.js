@@ -193,6 +193,7 @@ function SideBar(props) {
               <Button onClick={props.onAddGoalClick}>Add a goal</Button>
             </Menu.Item>
           )}
+
         </Menu>
       </Sider>
       )}
