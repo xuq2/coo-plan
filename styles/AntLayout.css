@@ -166,6 +166,74 @@ button {
   width: 100%;
 }
 
-/* .tasks-checkbox .ant-checkbox { 
-  width: auto;
-} */
+.time-line {
+  padding: 5px 10px 0 10px;
+}
+
+.goal-col {
+  margin-bottom: 10px;
+}
+.top-year {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+h2.ant-typography{
+  margin-bottom: 0px;
+}
+@media (max-width: 1410px) {
+  .each-year{
+    width: 200px !important;
+  }
+}
+@media (max-width: 1200px) {
+  .each-year{
+    width: 150px !important;
+  }
+}
+@media (max-width: 854px) {
+  .each-year{
+    width: 120px !important;
+  }
+}
+@media (max-width: 768px) {
+  .each-year{
+    width: 160px !important;
+  }
+}
+@media (max-width: 550px) {
+  .terms {
+    font-size: 11px;
+  }
+}
+
+.terms {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+.term-row {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+}
+.fall {
+  background-color: rgb(255, 189, 66);
+  /* margin-left: 5px; */
+  border-radius: 20px;
+}
+.winter {
+  background-color:rgb(183, 221, 255);
+  border-radius: 20px;
+}
+.spring {
+  background-color:rgb(53, 255, 178);
+  border-radius: 20px;
+}
+.summer {
+  background-color:#ff8484;
+  border-radius: 20px;
+}
+
+.ant-divider-horizontal.ant-divider-with-text.divider{
+  border-top-color:rgb(53, 198, 255)
+}
+

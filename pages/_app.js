@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import "../styles/AntLayout.css";
 import Head from "next/head";
-import favicon from '../public/favicon.png';
+import favicon from '../public/favicon2.png';
 function MyApp({ Component, pageProps }) {
   return (
     <>
