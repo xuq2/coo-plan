@@ -33,7 +33,7 @@ function ProfileIcon(props) {
             console.log(response)
             if(response.status == 200) {
               console.log("logout!")
-              router.push('/login');
+              router.push('/');
             }
             else {
               console.log("Log out fail")
