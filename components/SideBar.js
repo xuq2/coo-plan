@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, DatePicker, Divider, Layout, Menu, Space, notification } from "antd";
+import moment from 'moment';
 import Link from 'next/link'
 import {
   DesktopOutlined,
@@ -40,7 +41,7 @@ function useWindowSize() {
 function SideBar(props) {
   const [collapsed, setCollapsed] = useState(false);
   const [ planYear, setPlanYear ] = useState("");
-  console.log(props.allData)
+  console.log("all data:",props.allData)
   const size = useWindowSize();
   console.log(size.width)
   // if(size.width<=700) {
@@ -106,11 +107,13 @@ function SideBar(props) {
     });
   };
 
+  function disabledDate(current) {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day');
+  }
   
   return (
-    // TODO:
     <>
-      {/* TODO: background颜色要改, 选择颜色改变加重 */}
       {size.width<=800 ? (
         <Sider
         style={{ backgroundColor: "#F0F4F9"}}
@@ -142,7 +145,7 @@ function SideBar(props) {
           <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<FolderAddOutlined /> } >
           <Space direction="vertical">
             <Button onClick={()=>addNewPlan()}>Make new plan</Button>
-          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
+          <DatePicker picker="year" disabledDate={disabledDate} onChange={(date, dateString)=> {setPlanYear(dateString)}} />
           </Space>
           </Menu.Item>
             </>
@@ -184,7 +187,7 @@ function SideBar(props) {
           <Menu.Item style={{height: 100}} key="4" title="Make new plan" icon={<FolderAddOutlined /> } >
           <Space direction="vertical">
             <Button onClick={()=>addNewPlan()}>Make new plan</Button>
-          <DatePicker onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
+          <DatePicker disabledDate={disabledDate} onChange={(date, dateString)=> {setPlanYear(dateString)}} picker="year"/>
           </Space>
           </Menu.Item>
             </>

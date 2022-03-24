@@ -53,14 +53,14 @@ export default function YearItem() {
                               console.log(data.username);
                               setUsername(data.username);
                               if(data.data[i].goals) {
-                                setAllData(data.data[i].goals);
+                                setAllData(data.data[i].goals.sort());
                               }
                               break;
                           }
                           
                       }
                   }
-                  console.log(allData)
+                  console.log("get all data port",allData)
                 });
               }
             })

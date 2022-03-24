@@ -44,7 +44,7 @@ export default function Home() {
               }
               if(data.length !== 0 && 'data' in data) {
                 setUsername(data.username);
-                setPlanYears(data.data.map(each => each.year));
+                setPlanYears(data.data.map(each => each.year).sort());
               }
               console.log(data)
             });
