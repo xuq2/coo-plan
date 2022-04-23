@@ -390,7 +390,14 @@ function AddGoalForm(props, ref) {
               "redo",
             ],
           }}
+          onReady={(editor) => {
+            if(goalDescription) {
+              const data = editor.getData();
+              setGoalDescription(data);
+            }
+          }}
           onChange={(event, editor) => {
+            // console.log("goalllllll", goalDescription);
             const data = editor.getData();
             console.log({ event, editor, data });
             setGoalDescription(data);
