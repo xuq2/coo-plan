@@ -1,6 +1,6 @@
 # CooPlan
 ## Development period
-From 3/7/2022 to (Now)
+From 3/7/2022 to 4/23/2022
 ## Developers
 Qi Xu  
 Eugene Jie Yee Yong  
